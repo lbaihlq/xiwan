@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="main">
+			<p>{{a==false?'黄丽琼':'李斌'}}</p>
+			<button @click="tingzhi()">停止</button>
+			<button @click="jishiqi">开始</button>
+		</div>
+		
+	</body>
+	<script>
+		let jsq={}
+		var vm=new Vue({
+			 el: '#main',
+			data:{
+				a:false
+			},
+			methods:{
+				jishiqi(){
+					clearTimeout(jsq)
+					let that=this
+					console.log(that.a)
+					jsq=setInterval(function(){
+						that.a=!that.a	
+					},50)
+				},
+				tingzhi(){
+					console.log("12222222222")
+					this.a=false
+					clearTimeout(jsq)
+				}
+			},
+			mounted:function(){
+				this.jishiqi()
+			}
+		})
+	</script>
+</html>
+
